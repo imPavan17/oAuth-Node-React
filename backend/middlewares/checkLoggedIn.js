@@ -1,11 +1,10 @@
 function checkLoggedIn(req, res, next) {
-  const isLoggedIn = false;
+  const isLoggedIn = req.isAuthenticated() && req.user;
 
-  if (isLoggedIn) {
-    next();
-  } else {
-    res.status(401).json({ message: "You must log in." });
+  if (!isLoggedIn) {
+    return res.status(401).json({ message: "You must log in." });
   }
+  next();
 }
 
 module.exports = checkLoggedIn;
