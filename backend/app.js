@@ -4,14 +4,22 @@ const https = require("https");
 const express = require("express");
 const helmet = require("helmet");
 const passport = require("passport");
+const cookieSession = require("cookie-session");
 require("dotenv").config();
-require("./config/passport"); // Passport Setup
 
+require("./config/passport"); // Passport Setup
 const authRoutes = require("./routes/auth");
 const checkLoggedIn = require("./middlewares/checkLoggedIn");
 
 const app = express();
 app.use(helmet());
+app.use(
+  cookieSession({
+    name: "session",
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: ["secret key", "secret secret"],
+  })
+);
 app.use(passport.initialize());
 
 app.get("/", (req, res) => {

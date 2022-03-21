@@ -8,8 +8,9 @@ const AUTH_OPTIONS = {
   clientSecret: process.env.CLIENT_SECRET,
 };
 
-const verifyCallback = (accessToken, refreshToken, profile, done) => {
-  console.log("Google Profile", profile);
+const verifyCallback = (accessToken, _refreshToken, profile, done) => {
+  console.log("TOKEN ->", accessToken);
+  console.log("PROFILE ->", profile);
   done(null, profile);
 };
 
