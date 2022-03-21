@@ -9,8 +9,8 @@ const AUTH_OPTIONS = {
 };
 
 const verifyCallback = (accessToken, _refreshToken, profile, done) => {
-  console.log("TOKEN ->", accessToken);
-  console.log("PROFILE ->", profile);
+  //   console.log("TOKEN ->", accessToken);
+  //   console.log("PROFILE ->", profile);
   done(null, profile);
 };
 
@@ -18,10 +18,10 @@ passport.use(new GoogleStrategy(AUTH_OPTIONS, verifyCallback));
 
 // Save the session to the cookie
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user.id);
 });
 
 // Read the session from the cookie
-passport.deserializeUser((user, done) => {
-  done(null, user);
+passport.deserializeUser((id, done) => {
+  done(null, id);
 });
