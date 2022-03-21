@@ -15,3 +15,13 @@ const verifyCallback = (accessToken, _refreshToken, profile, done) => {
 };
 
 passport.use(new GoogleStrategy(AUTH_OPTIONS, verifyCallback));
+
+// Save the session to the cookie
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+// Read the session from the cookie
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});

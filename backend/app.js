@@ -21,6 +21,8 @@ app.use(
   })
 );
 app.use(passport.initialize());
+// This will allow the deserializeUser function to be called
+app.use(passport.session());
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
