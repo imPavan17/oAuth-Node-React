@@ -5,7 +5,7 @@ const express = require("express");
 const helmet = require("helmet");
 const passport = require("passport");
 require("dotenv").config();
-require("./config/passport");
+require("./config/passport"); // Passport Setup
 
 const authRoutes = require("./routes/auth");
 const checkLoggedIn = require("./middlewares/checkLoggedIn");
