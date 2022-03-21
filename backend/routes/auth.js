@@ -10,7 +10,10 @@ router.get(
 );
 
 // Logout
-router.get("/logout", (req, res) => {});
+router.get("/logout", (req, res) => {
+  req.logout(); // Removed req.user
+  return res.redirect("/");
+});
 
 // Failure
 router.get("/failure", (req, res) => {
